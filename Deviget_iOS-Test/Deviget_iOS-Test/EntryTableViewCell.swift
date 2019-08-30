@@ -9,13 +9,23 @@
 import UIKit
 
 class EntryTableViewCell: UITableViewCell {
+    
+    var entry: EntryData? {
+        didSet {
+            render()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        render()
+    }
+    
+    func loadData(entry: EntryData) {
+        self.entry = entry
     }
     
     func render() {
+        textLabel?.text = entry?.authorName
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,5 +33,4 @@ class EntryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

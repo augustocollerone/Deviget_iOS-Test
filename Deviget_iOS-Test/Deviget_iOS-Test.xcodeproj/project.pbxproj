@@ -13,6 +13,7 @@
 		2B6F57B22318CB1700844C2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B6F57B02318CB1700844C2C /* LaunchScreen.storyboard */; };
 		2B6F57BA2318CB9E00844C2C /* EntriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6F57B92318CB9E00844C2C /* EntriesTableViewController.swift */; };
 		2B6F57BC2318D1C100844C2C /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6F57BB2318D1C100844C2C /* EntryTableViewCell.swift */; };
+		2B6F57BE2318D2AF00844C2C /* RedditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6F57BD2318D2AF00844C2C /* RedditService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2B6F57B32318CB1700844C2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B6F57B92318CB9E00844C2C /* EntriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesTableViewController.swift; sourceTree = "<group>"; };
 		2B6F57BB2318D1C100844C2C /* EntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
+		2B6F57BD2318D2AF00844C2C /* RedditService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				2B6F57A72318CB1600844C2C /* AppDelegate.swift */,
 				2B6F57B92318CB9E00844C2C /* EntriesTableViewController.swift */,
+				2B6F57BD2318D2AF00844C2C /* RedditService.swift */,
 				2B6F57BB2318D1C100844C2C /* EntryTableViewCell.swift */,
 				2B6F57AB2318CB1600844C2C /* Main.storyboard */,
 				2B6F57AE2318CB1700844C2C /* Assets.xcassets */,
@@ -141,6 +144,7 @@
 				2B6F57BC2318D1C100844C2C /* EntryTableViewCell.swift in Sources */,
 				2B6F57BA2318CB9E00844C2C /* EntriesTableViewController.swift in Sources */,
 				2B6F57A82318CB1600844C2C /* AppDelegate.swift in Sources */,
+				2B6F57BE2318D2AF00844C2C /* RedditService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
