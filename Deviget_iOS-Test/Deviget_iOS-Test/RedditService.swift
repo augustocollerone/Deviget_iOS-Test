@@ -23,11 +23,11 @@ struct Entry: Decodable {
 }
 
 struct EntryData: Decodable {
-    let text: String
+    let title: String
     let authorName: String
     
     enum CodingKeys: String, CodingKey {
-        case text = "selftext"
+        case title
         case authorName = "author_fullname"
     }
 }

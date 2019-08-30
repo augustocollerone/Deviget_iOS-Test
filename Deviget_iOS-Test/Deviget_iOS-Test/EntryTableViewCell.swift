@@ -10,6 +10,8 @@ import UIKit
 
 class EntryTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     var entry: EntryData? {
         didSet {
             render()
@@ -25,7 +27,8 @@ class EntryTableViewCell: UITableViewCell {
     }
     
     func render() {
-        textLabel?.text = entry?.authorName
+        titleLabel.text = entry?.title
+        titleLabel.numberOfLines = 0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
