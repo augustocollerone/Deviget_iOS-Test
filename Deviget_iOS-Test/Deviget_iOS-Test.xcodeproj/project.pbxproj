@@ -60,8 +60,8 @@
 			children = (
 				2B6F57A72318CB1600844C2C /* AppDelegate.swift */,
 				2B6F57B92318CB9E00844C2C /* EntriesTableViewController.swift */,
-				2B6F57BD2318D2AF00844C2C /* RedditService.swift */,
 				2B6F57BB2318D1C100844C2C /* EntryTableViewCell.swift */,
+				2B6F57BD2318D2AF00844C2C /* RedditService.swift */,
 				2B6F57AB2318CB1600844C2C /* Main.storyboard */,
 				2B6F57AE2318CB1700844C2C /* Assets.xcassets */,
 				2B6F57B02318CB1700844C2C /* LaunchScreen.storyboard */,

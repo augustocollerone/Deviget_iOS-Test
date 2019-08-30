@@ -25,10 +25,18 @@ struct Entry: Decodable {
 struct EntryData: Decodable {
     let title: String
     let authorName: String
+    let commentsAmount: Int
+    let timeCreated: Int64
+    let thumbnailHeight: Int?
+    let thumbnailURL: String?
     
     enum CodingKeys: String, CodingKey {
         case title
-        case authorName = "author_fullname"
+        case authorName = "author"
+        case commentsAmount = "num_comments"
+        case timeCreated = "created_utc"
+        case thumbnailHeight = "thumbnail_height"
+        case thumbnailURL = "thumbnail"
     }
 }
 
@@ -65,5 +73,9 @@ class RedditService {
         })
         
         task.resume()
+    }
+    
+    static func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }
