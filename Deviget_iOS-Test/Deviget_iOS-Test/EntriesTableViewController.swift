@@ -24,21 +24,31 @@ class EntriesTableViewController: UITableViewController {
         getData()
     }
     
-    func getData() {
+    @objc func getData() {
         RedditService.requestData(success: { (entries) in
             self.entries = entries
+            self.refreshControl?.endRefreshing()
         }) { (error) in
+            self.refreshControl?.endRefreshing()
             print("Error")
         }
     }
     
     func setupUI() {
+        //Table view
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.backgroundColor = .gray
         tableView.tableFooterView = UIView()
         tableView.tableHeaderView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
+        
+        //Refresh control
+        let refreshControl = UIRefreshControl()
+        self.refreshControl = refreshControl
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(getData), for: .valueChanged)
+        tableView.addSubview(refreshControl)
     }
 
     // MARK: - Table view data source
@@ -55,6 +65,7 @@ class EntriesTableViewController: UITableViewController {
             return UITableViewCell()
         }
         cell.loadData(entry: entries[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
 }

@@ -29,6 +29,7 @@ struct EntryData: Decodable {
     let timeCreated: Int64
     let thumbnailHeight: Int?
     let thumbnailURL: String?
+    let imageURL: String?
     
     enum CodingKeys: String, CodingKey {
         case title
@@ -37,6 +38,7 @@ struct EntryData: Decodable {
         case timeCreated = "created_utc"
         case thumbnailHeight = "thumbnail_height"
         case thumbnailURL = "thumbnail"
+        case imageURL = "url"
     }
 }
 
