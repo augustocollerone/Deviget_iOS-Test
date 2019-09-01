@@ -53,8 +53,11 @@ class EntryTableViewCell: UITableViewCell {
         
         //Author name label
         authorLabel.text = entry.authorName
+        authorLabel.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         
         //Time delta label
+        timeLabel.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        timeLabel.alpha = 0.8
         let entryTime = Double(entry.timeCreated)
         let cal = Calendar.current
         let d1 = Date()
@@ -82,9 +85,9 @@ class EntryTableViewCell: UITableViewCell {
                 RedditService.getData(from: imageURL) { (data, response, error) in
                     guard let data = data, error == nil else { return }
                     DispatchQueue.main.async() {
-                        let image = UIImage(data: data)
-                        self.thumbnailImageView.image = image != nil ? image : nil
-                        self.layoutIfNeeded()
+                        if let image = UIImage(data: data) {
+                            self.thumbnailImageView.image = image
+                        }
                     }
                 }
             }
