@@ -18,21 +18,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="entryCell" rowHeight="300" id="BI5-rC-nrR" customClass="EntryTableViewCell" customModule="Deviget_iOS_Test" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="300"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="entryCell" rowHeight="485" id="BI5-rC-nrR" customClass="EntryTableViewCell" customModule="Deviget_iOS_Test" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="485"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BI5-rC-nrR" id="9nu-K8-Ev0">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="299.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="484.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mus-tK-nSF">
-                                            <rect key="frame" x="20" y="51" width="374" height="38"/>
+                                            <rect key="frame" x="20" y="51" width="374" height="33"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZY-T2-uay">
-                                            <rect key="frame" x="20" y="259" width="374" height="30"/>
+                                            <rect key="frame" x="20" y="444" width="374" height="30"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0H-7m-Xrh">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -67,9 +67,9 @@
                                             </constraints>
                                         </stackView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nSo-dI-Hpu">
-                                            <rect key="frame" x="20" y="99" width="374" height="140"/>
+                                            <rect key="frame" x="20" y="94" width="374" height="330"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="140" id="763-Ly-WIh"/>
+                                                <constraint firstAttribute="height" constant="330" id="763-Ly-WIh"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>

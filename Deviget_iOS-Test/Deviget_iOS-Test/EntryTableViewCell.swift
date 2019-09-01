@@ -29,6 +29,7 @@ class EntryTableViewCell: UITableViewCell {
     }
 
     override func awakeFromNib() {
+        self.imageViewHeightConstraint.constant = UIScreen.main.bounds.width
         super.awakeFromNib()
     }
     
@@ -70,8 +71,21 @@ class EntryTableViewCell: UITableViewCell {
                 guard let data = data, error == nil else { return }
                 DispatchQueue.main.async() {
                     let image = UIImage(data: data)
-                    self.imageViewHeightConstraint.constant = CGFloat(entry.thumbnailHeight ?? 140)
+                    self.imageViewHeightConstraint.constant = UIScreen.main.bounds.width
                     self.thumbnailImageView.image = image
+                    self.layoutIfNeeded()
+                }
+            }
+            
+            //Get definitive image
+            if let imageURLString = entry.imageURL, let imageURL = URL(string: imageURLString) {
+                RedditService.getData(from: imageURL) { (data, response, error) in
+                    guard let data = data, error == nil else { return }
+                    DispatchQueue.main.async() {
+                        let image = UIImage(data: data)
+                        self.thumbnailImageView.image = image != nil ? image : nil
+                        self.layoutIfNeeded()
+                    }
                 }
             }
         } else {
@@ -82,7 +96,10 @@ class EntryTableViewCell: UITableViewCell {
         let imageAttachment =  NSTextAttachment()
         imageAttachment.image = UIImage(named:"comment")
         let imageOffsetY:CGFloat = -5.0;
-        imageAttachment.bounds = CGRect(x: 0, y: imageOffsetY, width: imageAttachment.image!.size.width, height: imageAttachment.image!.size.height)
+        guard let imageAttachmentImage = imageAttachment.image else {
+            return
+        }
+        imageAttachment.bounds = CGRect(x: 0, y: imageOffsetY, width: imageAttachmentImage.size.width, height: imageAttachmentImage.size.height)
         let attachmentString = NSAttributedString(attachment: imageAttachment)
         let completeText = NSMutableAttributedString(string: "")
         completeText.append(attachmentString)
