@@ -10,11 +10,7 @@ import UIKit
 
 class EntriesTableViewController: UITableViewController {
     
-    var entries: [EntryData] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var entries: [EntryData] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +23,7 @@ class EntriesTableViewController: UITableViewController {
     @objc func getData() {
         RedditService.requestData(success: { (entries) in
             self.entries = entries
+            self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
         }) { (error) in
             self.refreshControl?.endRefreshing()
@@ -42,6 +39,8 @@ class EntriesTableViewController: UITableViewController {
         tableView.tableHeaderView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
+        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem;
         
         //Refresh control
         let refreshControl = UIRefreshControl()
@@ -59,6 +58,19 @@ class EntriesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return entries.count
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            entries.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as? EntryTableViewCell else {
