@@ -32,6 +32,8 @@ class EntriesTableViewController: UITableViewController {
     }
     
     func setupUI() {
+        self.title = "Reddit"
+        
         //Table view
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.backgroundColor = .gray
@@ -40,7 +42,7 @@ class EntriesTableViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         
-        self.navigationItem.leftBarButtonItem = self.editButtonItem;
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
         
         //Refresh control
         let refreshControl = UIRefreshControl()
@@ -63,14 +65,12 @@ class EntriesTableViewController: UITableViewController {
         return true
     }
     
-    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             entries.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as? EntryTableViewCell else {

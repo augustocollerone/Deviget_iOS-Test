@@ -18,6 +18,7 @@ class EntryTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var bottomStackView: UIStackView!
     @IBOutlet weak var commentsLabel: UILabel!
+    @IBOutlet weak var saveImageButton: UIButton!
     
     //Constraints outlets
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
@@ -27,6 +28,8 @@ class EntryTableViewCell: UITableViewCell {
             render()
         }
     }
+    
+    var entryImage: UIImage?
 
     override func awakeFromNib() {
         self.imageViewHeightConstraint.constant = UIScreen.main.bounds.width
@@ -76,6 +79,7 @@ class EntryTableViewCell: UITableViewCell {
                     let image = UIImage(data: data)
                     self.imageViewHeightConstraint.constant = UIScreen.main.bounds.width
                     self.thumbnailImageView.image = image
+                    self.entryImage = image
                     self.layoutIfNeeded()
                 }
             }
@@ -87,6 +91,7 @@ class EntryTableViewCell: UITableViewCell {
                     DispatchQueue.main.async() {
                         if let image = UIImage(data: data) {
                             self.thumbnailImageView.image = image
+                            self.entryImage = image
                         }
                     }
                 }
@@ -111,10 +116,19 @@ class EntryTableViewCell: UITableViewCell {
         commentsLabel.textAlignment = .center;
         commentsLabel.attributedText = completeText;
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBAction func saveToLibrary(_ sender: AnyObject) {
+        if let image = self.entryImage {
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
+    }
+    
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        if error != nil {
+            self.saveImageButton.titleLabel?.text = "Fail to save"
+        } else {
+            self.saveImageButton.titleLabel?.text = "Saved!"
+        }
     }
 }
